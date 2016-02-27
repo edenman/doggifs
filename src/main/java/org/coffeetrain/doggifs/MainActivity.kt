@@ -4,19 +4,22 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import butterknife.ButterKnife
+import android.view.Window
+import android.view.WindowManager
 import flow.*
 
 class MainActivity : Activity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    ButterKnife.bind(this)
+    requestWindowFeature(Window.FEATURE_NO_TITLE)
+    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        WindowManager.LayoutParams.FLAG_FULLSCREEN)
   }
 
   override fun attachBaseContext(baseContext: Context) {
     var flowContext = Flow.configure(baseContext, this)
         .keyParceler(PaperParceler())
-        .defaultKey(Screens.ShowGifScreen("foo"))
+        .defaultKey(ShowGifScreen("pounce.gif"))
         .dispatcher(KeyDispatcher.configure(this, Changer()).build())
         .install()
     super.attachBaseContext(flowContext)
