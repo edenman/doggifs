@@ -1,0 +1,66 @@
+buildscript {
+  ext.butterknife_version = '7.0.1'
+  ext.flow_version = '1.0.0-alpha'
+  ext.junit_version = '4.12'
+  ext.kotlin_version = '1.0.0'
+  ext.paperparcel_version = '1.0.0-beta1'
+
+  repositories {
+    mavenCentral()
+    maven {
+      url = 'https://jitpack.io'
+    }
+  }
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath 'com.android.tools.build:gradle:2.0.0-beta4'
+  }
+}
+
+allprojects {
+  repositories {
+    mavenCentral()
+    maven {
+      url = 'https://jitpack.io'
+    }
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion "23.0.2"
+
+  defaultConfig {
+    applicationId "org.coffeetrain.doggifs"
+    minSdkVersion 21
+    targetSdkVersion 23
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+    }
+  }
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
+}
+
+dependencies {
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  compile "com.squareup.flow:flow:$flow_version"
+  compile "com.github.grandstaish.paperparcel:paperparcel:$paperparcel_version"
+  kapt "com.github.grandstaish.paperparcel:compiler:$paperparcel_version"
+  compile "com.jakewharton:butterknife:$butterknife_version"
+  kapt "com.jakewharton:butterknife:$butterknife_version"
+
+  testCompile "junit:junit:$junit_version"
+}
