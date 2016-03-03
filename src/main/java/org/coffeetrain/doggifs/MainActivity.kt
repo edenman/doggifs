@@ -5,15 +5,19 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Window
-import android.view.WindowManager
-import flow.*
+import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
+import flow.Direction
+import flow.Flow
+import flow.KeyChanger
+import flow.KeyDispatcher
+import flow.State
+import flow.TraversalCallback
 
 class MainActivity : Activity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     requestWindowFeature(Window.FEATURE_NO_TITLE)
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    window.setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN)
   }
 
   override fun attachBaseContext(baseContext: Context) {
@@ -26,7 +30,7 @@ class MainActivity : Activity() {
   }
 
   override fun onBackPressed() {
-    if (!Flow.get(this).goBack()) {
+    if (!flow.goBack()) {
       super.onBackPressed()
     }
   }
@@ -38,11 +42,11 @@ class MainActivity : Activity() {
         incomingContexts: MutableMap<Any, Context>,
         callback: TraversalCallback) {
       val toScreen = incoming.getKey<Any>();
-      val annotation: Layout = toScreen.javaClass.getAnnotation(Layout::class.java);
-      checkNotNull(annotation.resId, { "Screen didn't have a layout annotation" });
-      val context: Context? = incomingContexts.get(incoming.getKey())
+      val annotation = checkNotNull(toScreen.javaClass.getAnnotation(Layout::class.java),
+          { "Screen didn't have a layout annotation" })
+      val context = incomingContexts[toScreen]
       val inflated = LayoutInflater.from(context).inflate(annotation.resId, null)
-      setContentView(inflated);
+      setContentView(inflated)
     }
   }
 }
