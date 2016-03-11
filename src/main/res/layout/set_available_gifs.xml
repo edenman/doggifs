@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.coffeetrain.doggifs.ShowGifScreenView
+<org.coffeetrain.doggifs.SetAvailableGifsScreenView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/show_gif_screen"
+    android:id="@+id/set_available_gifs"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background"
@@ -12,12 +12,12 @@
       android:layout_width="match_parent"
       android:layout_height="@dimen/action_bar_height"
       />
-  <com.felipecsl.gifimageview.library.GifImageView
-      android:id="@+id/gif_view"
+  <TableLayout
+      android:id="@+id/grid"
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:layout_weight="1"
-      android:background="@color/app_background"
-      />
-</org.coffeetrain.doggifs.ShowGifScreenView>
+      >
+  </TableLayout>
+</org.coffeetrain.doggifs.SetAvailableGifsScreenView>
 

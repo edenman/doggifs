@@ -6,5 +6,4 @@ import kotlin.annotation.AnnotationTarget.CLASS
 
 @Target(CLASS)
 @Retention(RUNTIME)
-annotation class Layout(@LayoutRes val resId: Int)
-
+annotation class Screen(@LayoutRes val layoutResId: Int)

@@ -23,10 +23,14 @@ class MainActivity : Activity() {
   override fun attachBaseContext(baseContext: Context) {
     var flowContext = Flow.configure(baseContext, this)
         .keyParceler(PaperParceler())
-        .defaultKey(ShowGifScreen("pounce.gif"))
+        .defaultKey(ShowGifScreen("pounce"))
         .dispatcher(KeyDispatcher.configure(this, Changer()).build())
         .install()
     super.attachBaseContext(flowContext)
+  }
+
+  override fun getSystemService(name: String?): Any? {
+    return super.getSystemService(name) ?: application.getSystemService(name)
   }
 
   override fun onBackPressed() {
@@ -42,11 +46,18 @@ class MainActivity : Activity() {
         incomingContexts: MutableMap<Any, Context>,
         callback: TraversalCallback) {
       val toScreen = incoming.getKey<Any>();
-      val annotation = checkNotNull(toScreen.javaClass.getAnnotation(Layout::class.java),
-          { "Screen didn't have a layout annotation" })
+      val annotation = checkNotNull(toScreen.javaClass.getAnnotation(Screen::class.java),
+          { "Screen didn't have a layout annotation: " + toScreen.javaClass })
+      val layoutResId = checkNotNull(annotation.layoutResId,
+          { "layoutResId is required (this shouldn't be possible!" })
+
+      outgoing?.save(findViewById(android.R.id.content))
+
       val context = incomingContexts[toScreen]
-      val inflated = LayoutInflater.from(context).inflate(annotation.resId, null)
+      val inflated = LayoutInflater.from(context).inflate(layoutResId, null)
+      incoming.restore(inflated)
       setContentView(inflated)
+      callback.onTraversalCompleted()
     }
   }
 }

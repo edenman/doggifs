@@ -1,2 +1,9 @@
 <resources>
+  <dimen name="action_bar_height">@dimen/abc_action_bar_default_height_material</dimen>
+  <dimen name="padding">8dp</dimen>
+  <dimen name="padding_2x">16dp</dimen>
+  <dimen name="padding_4x">32dp</dimen>
+  <dimen name="text_size_action_bar">24sp</dimen>
+  <dimen name="text_size">20sp</dimen>
+  <dimen name="thumbnail_size">64dp</dimen>
 </resources>

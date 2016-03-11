@@ -2,4 +2,16 @@
 
   <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
   </style>
+
+  <style name="SettingsRow">
+    <item name="android:textSize">@dimen/text_size</item>
+    <item name="android:textColor">@color/text_colorstatelist</item>
+    <item name="android:padding">@dimen/padding_2x</item>
+    <item name="android:background">@drawable/background_selector</item>
+  </style>
+
+  <style name="ActionBarText">
+    <item name="android:textSize">@dimen/text_size_action_bar</item>
+    <item name="android:textColor">@color/text_color</item>
+  </style>
 </resources>

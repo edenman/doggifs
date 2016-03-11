@@ -12,7 +12,7 @@ buildscript {
   }
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    classpath 'com.android.tools.build:gradle:2.0.0-beta6'
+    classpath 'com.android.tools.build:gradle:2.1.0-alpha1'
   }
 }
 
@@ -39,7 +39,6 @@ android {
   buildToolsVersion "23.0.2"
 
   defaultConfig {
-    applicationId "org.coffeetrain.doggifs"
     minSdkVersion 21
     targetSdkVersion 23
     versionCode 1
