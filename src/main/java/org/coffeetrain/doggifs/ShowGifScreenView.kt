@@ -35,7 +35,7 @@ class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(co
   }
 
   private fun onSettingsClicked() {
-    flow.set(SettingsScreen())
+    flow.set(SettingsScreen)
   }
 
   private fun onMaximizeClicked() {
