@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="app_background">@android:color/black</color>
+  <color name="disabled_overlay">#CC555555</color>
   <color name="pressed_background">#555555</color>
   <color name="text_color">@android:color/white</color>
   <color name="text_color_disabled">#999999</color>

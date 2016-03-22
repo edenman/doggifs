@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Dog GIFs</string>
     <string name="after_maximize">To un-maximize, just tap on the image!</string>
+    <string name="cycle_settings">GIF Cycling Settings [SOON]</string>
+    <string name="download_more_gifs">Download More GIFs [SOON]</string>
+    <string name="no_gifs">No GIFs enabled!</string>
     <string name="settings">Settings</string>
     <string name="set_available_gifs">Set Available GIFs</string>
-    <string name="download_more_gifs">Download More Dog GIFs</string>
-    <string name="cycle_settings">GIF Cycling Settings</string>
 </resources>

@@ -12,12 +12,16 @@
       android:layout_width="match_parent"
       android:layout_height="@dimen/action_bar_height"
       />
-  <TableLayout
+  <GridView
       android:id="@+id/grid"
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:layout_weight="1"
-      >
-  </TableLayout>
+      android:numColumns="auto_fit"
+      android:stretchMode="none"
+      android:horizontalSpacing="0dp"
+      android:verticalSpacing="0dp"
+      android:columnWidth="@dimen/thumbnail_size"
+      />
 </org.coffeetrain.doggifs.SetAvailableGifsScreenView>
 

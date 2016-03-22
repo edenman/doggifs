@@ -14,7 +14,15 @@ class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(co
     action_bar.showButton(R.drawable.ic_zoom_out_map_white_36dp, { onMaximizeClicked() })
     action_bar.showButton(R.drawable.ic_settings_white_36dp, { onSettingsClicked() })
     val repo: DogGifRepository = context.dogGifRepository
-    val handle = flowKey<ShowGifScreen>().path
+    var handle = flowKey<ShowGifScreen>().handle
+    if (!repo.isAvailable(handle)) {
+      if (repo.hasAnyAvailableGifs()) {
+        handle = repo.nextGifHandle(handle)
+      } else {
+        Toast.makeText(context, R.string.no_gifs, LENGTH_SHORT).show()
+        return
+      }
+    }
     val bytes = repo.loadGif(handle)
     gif_view.setBytes(bytes)
     gif_view.startAnimation()
