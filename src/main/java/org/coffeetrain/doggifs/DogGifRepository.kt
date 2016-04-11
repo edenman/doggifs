@@ -1,25 +1,26 @@
 package org.coffeetrain.doggifs
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.jakewharton.rxrelay.BehaviorRelay
 import rx.Observable
 import java.io.InputStream
-import java.util.Arrays
-import java.util.LinkedHashMap
 
 class DogGifRepository(val context: Context) {
-  private val assetGifs = Arrays.asList("pounce", "weiners")
-  private val availableMap = LinkedHashMap<String, Boolean>()
+  private val assetGifs = listOf("pounce", "weiners")
+  private val availableMap = linkedMapOf<String, Boolean>()
   private val availableMapRelay = BehaviorRelay.create<Map<String, Boolean>>()
+
+  val prefs: SharedPreferences by lazy {
+    context.getSharedPreferences("doggif_availability", 0)
+  }
 
   init {
     for (handle in assetGifs) {
-      availableMap.put(handle, getPrefs().getBoolean("avail-" + handle, true))
+      availableMap.put(handle, prefs.getBoolean("avail-" + handle, true))
     }
     availableMapRelay.call(availableMap)
   }
-
-  private fun getPrefs() = context.getSharedPreferences("doggif_availability", 0)
 
   fun loadGif(handle: String): ByteArray {
     val gifStream: InputStream = context.assets.open(handle + ".gif")
@@ -44,7 +45,9 @@ class DogGifRepository(val context: Context) {
   }
 
   fun setAvailable(handle: String, available: Boolean) {
-    getPrefs().edit().putBoolean("avail-" + handle, available)
+    prefs.edit()
+        .putBoolean("avail-" + handle, available)
+        .apply()
     availableMap.put(handle, available)
     availableMapRelay.call(availableMap)
   }
