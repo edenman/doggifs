@@ -39,7 +39,7 @@ class MainActivity : Activity() {
     }
   }
 
-  inner class Changer : KeyChanger() {
+  inner class Changer : KeyChanger {
     override fun changeKey(outgoing: State?,
         incoming: State,
         direction: Direction,
