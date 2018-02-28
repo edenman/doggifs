@@ -53,15 +53,15 @@ android {
 
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation "com.squareup.flow:flow:1.0.0-alpha"
+  implementation "com.squareup.flow:flow:1.0.0-alpha3"
   implementation "com.github.grandstaish.paperparcel:paperparcel:$paperparcel_version"
   kapt "com.github.grandstaish.paperparcel:compiler:$paperparcel_version"
   implementation 'com.felipecsl:gifimageview:2.0.0'
-  implementation 'com.squareup.okio:okio:1.6.0'
-  implementation 'com.android.support:appcompat-v7:24.2.1'
-  implementation 'com.jakewharton.rxrelay:rxrelay:1.0.0'
-  implementation 'io.reactivex:rxandroid:1.1.0'
-  implementation 'io.reactivex:rxjava:1.1.3'
+  implementation 'com.squareup.okio:okio:1.13.0'
+  implementation 'com.android.support:appcompat-v7:27.1.0'
+  implementation 'com.jakewharton.rxrelay:rxrelay:1.2.0'
+  implementation 'io.reactivex:rxandroid:1.2.1'
+  implementation 'io.reactivex:rxjava:1.3.3'
 
   testImplementation "junit:junit:4.12"
 }
