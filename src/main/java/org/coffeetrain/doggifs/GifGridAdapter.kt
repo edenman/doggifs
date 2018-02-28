@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 
 class GifGridAdapter(context: Context) : BaseAdapter() {
-  val inflater = LayoutInflater.from(context)
-  val allGifHandles = mutableListOf<String>()
+  private val inflater = LayoutInflater.from(context)!!
+  private val allGifHandles = mutableListOf<String>()
 
   fun setHandles(handles: Collection<String>) {
     allGifHandles.clear()
@@ -17,7 +17,7 @@ class GifGridAdapter(context: Context) : BaseAdapter() {
   }
 
   override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-    val view = convertView ?: inflater.inflate(R.layout.gif_grid_cell, parent, false);
+    val view = convertView ?: inflater.inflate(R.layout.gif_grid_cell, parent, false)
     val cellView = view as GifGridCellView
     cellView.handle = allGifHandles[position]
     return view

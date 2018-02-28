@@ -1,7 +1,14 @@
 package org.coffeetrain.doggifs
 
-import nz.bradcampbell.paperparcel.PaperParcel
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-@PaperParcel
+@Parcelize
 @Screen(R.layout.settings_screen)
-object SettingsScreen
+class SettingsScreen : Parcelable {
+  override fun equals(other: Any?): Boolean {
+    return other is SettingsScreen
+  }
+
+  override fun hashCode() = 0
+}

@@ -21,8 +21,8 @@ class MainActivity : Activity() {
   }
 
   override fun attachBaseContext(baseContext: Context) {
-    var flowContext = Flow.configure(baseContext, this)
-        .keyParceler(PaperParceler())
+    val flowContext = Flow.configure(baseContext, this)
+        .keyParceler(KotlinParceler())
         .defaultKey(ShowGifScreen("pounce"))
         .dispatcher(KeyDispatcher.configure(this, Changer()).build())
         .install()
@@ -45,7 +45,7 @@ class MainActivity : Activity() {
         direction: Direction,
         incomingContexts: MutableMap<Any, Context>,
         callback: TraversalCallback) {
-      val toScreen = incoming.getKey<Any>();
+      val toScreen = incoming.getKey<Any>()
       val annotation = checkNotNull(toScreen.javaClass.getAnnotation(Screen::class.java),
           { "Screen didn't have a layout annotation: " + toScreen.javaClass })
       val layoutResId = checkNotNull(annotation.layoutResId,

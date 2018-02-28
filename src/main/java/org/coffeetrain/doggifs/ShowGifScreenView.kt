@@ -28,8 +28,8 @@ class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(co
     gif_view.startAnimation()
     gif_view.setOnTouchListener(object : SwipeOrClickTouchListener(context) {
       override fun onClick() {
-        action_bar.visibility = VISIBLE;
-        gif_view.setOnClickListener(null);
+        action_bar.visibility = VISIBLE
+        gif_view.setOnClickListener(null)
       }
 
       override fun onSwipeLeftToRight() {
@@ -43,11 +43,11 @@ class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(co
   }
 
   private fun onSettingsClicked() {
-    flow.set(SettingsScreen)
+    flow.set(SettingsScreen())
   }
 
   private fun onMaximizeClicked() {
-    action_bar.visibility = GONE;
-    Toast.makeText(context, R.string.after_maximize, LENGTH_SHORT).show();
+    action_bar.visibility = GONE
+    Toast.makeText(context, R.string.after_maximize, LENGTH_SHORT).show()
   }
 }
