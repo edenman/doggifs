@@ -1,7 +1,14 @@
 package org.coffeetrain.doggifs
 
-import nz.bradcampbell.paperparcel.PaperParcel
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-@PaperParcel
+@Parcelize
 @Screen(R.layout.set_available_gifs)
-object SetAvailableGifsScreen
+class SetAvailableGifsScreen : Parcelable {
+  override fun equals(other: Any?): Boolean {
+    return other is SetAvailableGifsScreen
+  }
+
+  override fun hashCode() = 0
+}

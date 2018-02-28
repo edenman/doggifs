@@ -1,7 +1,6 @@
 buildscript {
   ext.butterknife_version = '7.0.1'
   ext.kotlin_version = '1.2.21'
-  ext.paperparcel_version = '1.0.0-beta5'
 
   repositories {
     mavenCentral()
@@ -51,11 +50,13 @@ android {
   }
 }
 
+androidExtensions {
+  experimental = true
+}
+
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation "com.squareup.flow:flow:1.0.0-alpha3"
-  implementation "com.github.grandstaish.paperparcel:paperparcel:$paperparcel_version"
-  kapt "com.github.grandstaish.paperparcel:compiler:$paperparcel_version"
   implementation 'com.felipecsl:gifimageview:2.0.0'
   implementation 'com.squareup.okio:okio:1.13.0'
   implementation 'com.android.support:appcompat-v7:27.1.0'

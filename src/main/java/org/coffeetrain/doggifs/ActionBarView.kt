@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.action_bar.view.title
 class ActionBarView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
   init {
     orientation = LinearLayout.HORIZONTAL
-    LayoutInflater.from(context).inflate(R.layout.action_bar, this);
+    LayoutInflater.from(context).inflate(R.layout.action_bar, this)
   }
 
   fun showButton(@DrawableRes iconResId: Int, onClickListener: (View) -> Unit) {

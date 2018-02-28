@@ -10,7 +10,7 @@ class SettingsScreenView(context: Context, attrs: AttributeSet) : LinearLayout(c
   override fun onFinishInflate() {
     super.onFinishInflate()
     action_bar.titleText = R.string.settings
-    set_available_gifs.setOnClickListener { flow.set(SetAvailableGifsScreen) }
+    set_available_gifs.setOnClickListener { flow.set(SetAvailableGifsScreen()) }
   }
 }
 

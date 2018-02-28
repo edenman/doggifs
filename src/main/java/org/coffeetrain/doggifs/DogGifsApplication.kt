@@ -15,6 +15,6 @@ class DogGifsApplication : Application() {
   }
 
   companion object {
-    val dogGifRepositoryName: String = "dogGifRepository"
+    const val dogGifRepositoryName: String = "dogGifRepository"
   }
 }

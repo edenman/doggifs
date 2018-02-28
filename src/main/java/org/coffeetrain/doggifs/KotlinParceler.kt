@@ -2,14 +2,13 @@ package org.coffeetrain.doggifs
 
 import android.os.Parcelable
 import flow.KeyParceler
-import nz.bradcampbell.paperparcel.PaperParcels
 
-class PaperParceler : KeyParceler {
+class KotlinParceler : KeyParceler {
   override fun toParcelable(key: Any): Parcelable {
-    return PaperParcels.wrap(key);
+    return key as Parcelable
   }
 
   override fun toKey(parcelable: Parcelable): Any {
-    return PaperParcels.unsafeUnwrap(parcelable);
+    return parcelable
   }
 }

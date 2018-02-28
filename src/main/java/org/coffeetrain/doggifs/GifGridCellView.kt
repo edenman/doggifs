@@ -12,10 +12,10 @@ class GifGridCellView(context: Context, attributeSet: AttributeSet) :
     set(value) {
       field = value
       val gifBytes = context.dogGifRepository.loadGif(value!!)
-      val bitmap = BitmapFactory.decodeByteArray(gifBytes, 0, gifBytes.size);
+      val bitmap = BitmapFactory.decodeByteArray(gifBytes, 0, gifBytes.size)
       image.setImageBitmap(bitmap)
       val available = context.dogGifRepository.isAvailable(value)
-      foreground = if (available) null else getResources().getDrawable(R.drawable.disabled_overlay)
+      foreground = if (available) null else resources.getDrawable(R.drawable.disabled_overlay)
     }
 
   init {

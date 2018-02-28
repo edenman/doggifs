@@ -1,7 +1,8 @@
 package org.coffeetrain.doggifs
 
-import nz.bradcampbell.paperparcel.PaperParcel
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-@PaperParcel
+@Parcelize
 @Screen(R.layout.show_gif_screen)
-data class ShowGifScreen(val handle: String)
+data class ShowGifScreen(val handle: String) : Parcelable

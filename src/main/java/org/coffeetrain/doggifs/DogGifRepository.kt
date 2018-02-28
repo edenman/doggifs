@@ -11,20 +11,20 @@ class DogGifRepository(val context: Context) {
   private val availableMap = linkedMapOf<String, Boolean>()
   private val availableMapRelay = BehaviorRelay.create<Map<String, Boolean>>()
 
-  val prefs: SharedPreferences by lazy {
+  private val prefs: SharedPreferences by lazy {
     context.getSharedPreferences("doggif_availability", 0)
   }
 
   init {
     for (handle in assetGifs) {
-      availableMap.put(handle, prefs.getBoolean("avail-" + handle, true))
+      availableMap[handle] = prefs.getBoolean("avail-" + handle, true)
     }
     availableMapRelay.call(availableMap)
   }
 
   fun loadGif(handle: String): ByteArray {
     val gifStream: InputStream = context.assets.open(handle + ".gif")
-    return gifStream.readBytes(5000000);
+    return gifStream.readBytes(5000000)
   }
 
   fun nextGifHandle(handle: String): String {
@@ -36,7 +36,7 @@ class DogGifRepository(val context: Context) {
   fun previousGifHandle(handle: String): String {
     val gifs = getAvailableGifs()
     val currentIndex = gifs.indexOf(handle)
-    val previousIndex = if (currentIndex <= 0) gifs.size - 1 else currentIndex - 1;
+    val previousIndex = if (currentIndex <= 0) gifs.size - 1 else currentIndex - 1
     return gifs[previousIndex]
   }
 
@@ -48,12 +48,12 @@ class DogGifRepository(val context: Context) {
     prefs.edit()
         .putBoolean("avail-" + handle, available)
         .apply()
-    availableMap.put(handle, available)
+    availableMap[handle] = available
     availableMapRelay.call(availableMap)
   }
 
   fun isAvailable(handle: String): Boolean {
-    return availableMap.get(handle)!!
+    return availableMap[handle]!!
   }
 
   fun toggleAvailability(handle: String) {

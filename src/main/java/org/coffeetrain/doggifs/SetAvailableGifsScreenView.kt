@@ -8,15 +8,15 @@ import kotlinx.android.synthetic.main.set_available_gifs.view.grid
 import rx.android.schedulers.AndroidSchedulers
 import rx.subscriptions.CompositeSubscription
 
-class SetAvailableGifsScreenView(context: Context, attrs: AttributeSet) : LinearLayout(context,
-    attrs) {
-  val subscriptions = CompositeSubscription()
-  val adapter = GifGridAdapter(context)
+class SetAvailableGifsScreenView(context: Context, attrs: AttributeSet)
+  : LinearLayout(context, attrs) {
+  private val subscriptions = CompositeSubscription()
+  private val adapter = GifGridAdapter(context)
 
   override fun onFinishInflate() {
     super.onFinishInflate()
     action_bar.titleText = R.string.set_available_gifs
-    grid.adapter = adapter;
+    grid.adapter = adapter
   }
 
   override fun onAttachedToWindow() {
