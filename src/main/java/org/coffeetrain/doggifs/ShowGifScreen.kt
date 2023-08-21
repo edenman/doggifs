@@ -1,8 +1,11 @@
 package org.coffeetrain.doggifs
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.IgnoredOnParcel
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Screen(R.layout.show_gif_screen)
-data class ShowGifScreen(val handle: String) : Parcelable
+data class ShowGifScreen(val handle: String) : Screen {
+  @IgnoredOnParcel
+  override val layoutResId: Int = R.layout.show_gif_screen
+}

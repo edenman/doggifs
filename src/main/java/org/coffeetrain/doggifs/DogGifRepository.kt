@@ -17,14 +17,14 @@ class DogGifRepository(val context: Context) {
 
   init {
     for (handle in assetGifs) {
-      availableMap[handle] = prefs.getBoolean("avail-" + handle, true)
+      availableMap[handle] = prefs.getBoolean("avail-$handle", true)
     }
     availableMapRelay.call(availableMap)
   }
 
   fun loadGif(handle: String): ByteArray {
-    val gifStream: InputStream = context.assets.open(handle + ".gif")
-    return gifStream.readBytes(5000000)
+    val gifStream: InputStream = context.assets.open("$handle.gif")
+    return gifStream.readBytes()
   }
 
   fun nextGifHandle(handle: String): String {
@@ -44,9 +44,9 @@ class DogGifRepository(val context: Context) {
     return assetGifs.filter { availableMap[it] == true }
   }
 
-  fun setAvailable(handle: String, available: Boolean) {
+  private fun setAvailable(handle: String, available: Boolean) {
     prefs.edit()
-        .putBoolean("avail-" + handle, available)
+        .putBoolean("avail-$handle", available)
         .apply()
     availableMap[handle] = available
     availableMapRelay.call(availableMap)

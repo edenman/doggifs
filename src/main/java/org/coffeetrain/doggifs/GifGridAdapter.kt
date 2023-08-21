@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import org.coffeetrain.doggifs.databinding.GifGridCellBinding
 
 class GifGridAdapter(context: Context) : BaseAdapter() {
   private val inflater = LayoutInflater.from(context)!!
@@ -23,7 +24,7 @@ class GifGridAdapter(context: Context) : BaseAdapter() {
     return view
   }
 
-  override fun getItem(position: Int): Any? {
+  override fun getItem(position: Int): Any {
     return allGifHandles[position]
   }
 

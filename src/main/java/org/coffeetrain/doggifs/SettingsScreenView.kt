@@ -3,14 +3,15 @@ package org.coffeetrain.doggifs
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.settings_screen.view.action_bar
-import kotlinx.android.synthetic.main.settings_screen.view.set_available_gifs
+import org.coffeetrain.doggifs.databinding.SettingsScreenBinding
 
 class SettingsScreenView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
+  private lateinit var binding: SettingsScreenBinding
   override fun onFinishInflate() {
     super.onFinishInflate()
-    action_bar.titleText = R.string.settings
-    set_available_gifs.setOnClickListener { flow.set(SetAvailableGifsScreen()) }
+    binding = SettingsScreenBinding.bind(this)
+    binding.actionBar.titleText = R.string.settings
+    binding.setAvailableGifs.setOnClickListener { flow.set(SetAvailableGifsScreen()) }
   }
 }
 

@@ -1,11 +1,13 @@
 package org.coffeetrain.doggifs
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.IgnoredOnParcel
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Screen(R.layout.set_available_gifs)
-class SetAvailableGifsScreen : Parcelable {
+class SetAvailableGifsScreen : Screen {
+  @IgnoredOnParcel
+  override val layoutResId: Int = R.layout.set_available_gifs
   override fun equals(other: Any?): Boolean {
     return other is SetAvailableGifsScreen
   }

@@ -7,8 +7,8 @@ class DogGifsApplication : Application() {
     DogGifRepository(this)
   }
 
-  override fun getSystemService(name: String?): Any? {
-    if (name.equals(dogGifRepositoryName)) {
+  override fun getSystemService(name: String): Any? {
+    if (name == dogGifRepositoryName) {
       return dogGifRepository
     }
     return super.getSystemService(name)

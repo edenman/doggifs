@@ -1,11 +1,14 @@
 package org.coffeetrain.doggifs
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.IgnoredOnParcel
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Screen(R.layout.settings_screen)
-class SettingsScreen : Parcelable {
+class SettingsScreen : Screen {
+  @IgnoredOnParcel
+  override val layoutResId: Int = R.layout.settings_screen
+
   override fun equals(other: Any?): Boolean {
     return other is SettingsScreen
   }

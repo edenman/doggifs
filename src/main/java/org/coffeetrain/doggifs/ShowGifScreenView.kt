@@ -5,14 +5,17 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import kotlinx.android.synthetic.main.show_gif_screen.view.action_bar
-import kotlinx.android.synthetic.main.show_gif_screen.view.gif_view
+import org.coffeetrain.doggifs.databinding.SetAvailableGifsBinding
+import org.coffeetrain.doggifs.databinding.ShowGifScreenBinding
 
 class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
+  private lateinit var binding: ShowGifScreenBinding
+
   override fun onFinishInflate() {
     super.onFinishInflate()
-    action_bar.showButton(R.drawable.ic_zoom_out_map_white_36dp, { onMaximizeClicked() })
-    action_bar.showButton(R.drawable.ic_settings_white_36dp, { onSettingsClicked() })
+    binding = ShowGifScreenBinding.bind(this)
+    binding.actionBar.showButton(R.drawable.ic_zoom_out_map_white_36dp, { onMaximizeClicked() })
+    binding.actionBar.showButton(R.drawable.ic_settings_white_36dp, { onSettingsClicked() })
     val repo: DogGifRepository = context.dogGifRepository
     var handle = flowKey<ShowGifScreen>().handle
     if (!repo.isAvailable(handle)) {
@@ -24,12 +27,12 @@ class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(co
       }
     }
     val bytes = repo.loadGif(handle)
-    gif_view.setBytes(bytes)
-    gif_view.startAnimation()
-    gif_view.setOnTouchListener(object : SwipeOrClickTouchListener(context) {
+    binding.gifView.setBytes(bytes)
+    binding.gifView.startAnimation()
+    binding.gifView.setOnTouchListener(object : SwipeOrClickTouchListener(context) {
       override fun onClick() {
-        action_bar.visibility = VISIBLE
-        gif_view.setOnClickListener(null)
+        binding.actionBar.visibility = VISIBLE
+        binding.gifView.setOnClickListener(null)
       }
 
       override fun onSwipeLeftToRight() {
@@ -47,7 +50,7 @@ class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(co
   }
 
   private fun onMaximizeClicked() {
-    action_bar.visibility = GONE
+    binding.actionBar.visibility = GONE
     Toast.makeText(context, R.string.after_maximize, LENGTH_SHORT).show()
   }
 }
