@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import org.coffeetrain.doggifs.databinding.SetAvailableGifsBinding
 import org.coffeetrain.doggifs.databinding.ShowGifScreenBinding
 
 class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {

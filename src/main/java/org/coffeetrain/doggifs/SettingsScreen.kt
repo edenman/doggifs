@@ -1,6 +1,5 @@
 package org.coffeetrain.doggifs
 
-import android.os.Parcelable
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 

@@ -1,13 +1,13 @@
 package org.coffeetrain.doggifs
 
 import android.content.Context
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import org.coffeetrain.doggifs.databinding.ActionBarBinding
 
 class ActionBarView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {

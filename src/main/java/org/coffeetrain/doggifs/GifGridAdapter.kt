@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import org.coffeetrain.doggifs.databinding.GifGridCellBinding
 
 class GifGridAdapter(context: Context) : BaseAdapter() {
   private val inflater = LayoutInflater.from(context)!!

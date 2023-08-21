@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import kotlin.math.abs
 
 abstract class SwipeOrClickTouchListener(context: Context) : View.OnTouchListener {
   companion object {
@@ -43,13 +44,20 @@ abstract class SwipeOrClickTouchListener(context: Context) : View.OnTouchListene
       return true
     }
 
-    override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float,
-        velocityY: Float): Boolean {
+    override fun onFling(
+      e1: MotionEvent?,
+      e2: MotionEvent,
+      velocityX: Float,
+      velocityY: Float
+    ): Boolean {
+      if (e1 == null) {
+        return false
+      }
       val distanceX = e2.x - e1.x
       val distanceY = e2.y - e1.y
-      if (Math.abs(distanceX) > Math.abs(distanceY)
-          && Math.abs(distanceX) > SWIPE_DISTANCE_THRESHOLD
-          && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+      if (abs(distanceX) > abs(distanceY)
+          && abs(distanceX) > SWIPE_DISTANCE_THRESHOLD
+          && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
         if (distanceX > 0) {
           onSwipeLeftToRight()
         } else {
