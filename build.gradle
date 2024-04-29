@@ -50,6 +50,10 @@ android {
   kotlin {
     jvmToolchain(17)
   }
+  lintOptions {
+    warningsAsErrors true
+    baselineFile(file("lint-baseline.xml"))
+  }
 }
 
 dependencies {

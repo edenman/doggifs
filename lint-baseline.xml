@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.3.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.3.2)" variant="all" version="8.3.2">
+
+    <issue
+        id="DeprecatedCall"
+        message="android.app.Activity.onBackPressed is deprecated; consider using an alternative."
+        errorLine1="      super.onBackPressed()"
+        errorLine2="      ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/coffeetrain/doggifs/MainActivity.kt"
+            line="41"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/app_background` with a theme that also paints a background (inferred theme is `@style/AppTheme`)"
+        errorLine1="    android:background=&quot;@color/app_background&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/set_available_gifs.xml"
+            line="7"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/app_background` with a theme that also paints a background (inferred theme is `@style/AppTheme`)"
+        errorLine1="    android:background=&quot;@color/app_background&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/settings_screen.xml"
+            line="7"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/app_background` with a theme that also paints a background (inferred theme is `@style/AppTheme`)"
+        errorLine1="    android:background=&quot;@color/app_background&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/show_gif_screen.xml"
+            line="7"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.padding_4x` appears to be unused"
+        errorLine1="  &lt;dimen name=&quot;padding_4x&quot;>32dp&lt;/dimen>"
+        errorLine2="         ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="5"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/mipmap-xxxhdpi/app_icon.png"/>
+    </issue>
+
+    <issue
+        id="IconMissingDensityFolder"
+        message="Missing density variation folders in `src/main/res`: drawable-hdpi, drawable-mdpi, drawable-xhdpi">
+        <location
+            file="src/main/res"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="  &lt;ImageView"
+        errorLine2="   ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/action_bar.xml"
+            line="15"
+            column="4"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="  &lt;ImageView"
+        errorLine2="   ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/action_bar.xml"
+            line="24"
+            column="4"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="  &lt;ImageView"
+        errorLine2="   ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/gif_grid_cell.xml"
+            line="7"
+            column="4"/>
+    </issue>
+
+</issues>

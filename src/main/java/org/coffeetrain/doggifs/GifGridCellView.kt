@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import androidx.core.content.res.ResourcesCompat
 import org.coffeetrain.doggifs.databinding.GifGridCellBinding
 
 class GifGridCellView(context: Context, attributeSet: AttributeSet) :
@@ -22,7 +23,8 @@ class GifGridCellView(context: Context, attributeSet: AttributeSet) :
       val bitmap = BitmapFactory.decodeByteArray(gifBytes, 0, gifBytes.size)
       binding.image.setImageBitmap(bitmap)
       val available = context.dogGifRepository.isAvailable(value)
-      foreground = if (available) null else resources.getDrawable(R.drawable.disabled_overlay)
+      foreground = if (available) null else
+        ResourcesCompat.getDrawable(resources, R.drawable.disabled_overlay, null)
     }
 
   init {
