@@ -2,6 +2,8 @@ package org.coffeetrain.doggifs
 
 import android.content.Context
 import android.util.AttributeSet
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import org.coffeetrain.doggifs.databinding.SetAvailableGifsBinding
 import rx.android.schedulers.AndroidSchedulers
@@ -18,6 +20,11 @@ class SetAvailableGifsScreenView(context: Context, attrs: AttributeSet)
     binding = SetAvailableGifsBinding.bind(this)
     binding.actionBar.titleText = R.string.set_available_gifs
     binding.grid.adapter = adapter
+    val foo = WebView(context).apply {
+      webViewClient = object : WebViewClient() {}
+      loadUrl("omg")
+    }
+    println(foo)
   }
 
   override fun onAttachedToWindow() {
