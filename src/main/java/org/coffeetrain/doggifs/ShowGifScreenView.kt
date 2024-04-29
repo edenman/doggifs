@@ -1,5 +1,6 @@
 package org.coffeetrain.doggifs
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
@@ -10,6 +11,7 @@ import org.coffeetrain.doggifs.databinding.ShowGifScreenBinding
 class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
   private lateinit var binding: ShowGifScreenBinding
 
+  @SuppressLint("ClickableViewAccessibility")
   override fun onFinishInflate() {
     super.onFinishInflate()
     binding = ShowGifScreenBinding.bind(this)
@@ -29,6 +31,9 @@ class ShowGifScreenView(context: Context, attrs: AttributeSet) : LinearLayout(co
     binding.gifView.setBytes(bytes)
     binding.gifView.startAnimation()
     binding.gifView.setOnTouchListener(object : SwipeOrClickTouchListener(context) {
+      // The suggested replacement (clearOnClickListener) doesn't actually exist?
+      // Filed https://github.com/slackhq/slack-lints/issues/267
+      @SuppressLint("DenyListedApi")
       override fun onClick() {
         binding.actionBar.visibility = VISIBLE
         binding.gifView.setOnClickListener(null)
